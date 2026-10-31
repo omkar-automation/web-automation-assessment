@@ -1,0 +1,19 @@
+{
+  "name": "orangehrm-playwright-assignment",
+  "version": "1.0.0",
+  "private": true,
+  "description": "OrangeHRM Testing Engineer assignment using Playwright JavaScript",
+  "scripts": {
+    "test": "playwright test",
+    "test:part1": "playwright test tests/part1.spec.js",
+    "test:part2": "playwright test tests/part2.spec.js",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report",
+    "test:ci": "playwright test --workers=2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.0"
+  }
+}
