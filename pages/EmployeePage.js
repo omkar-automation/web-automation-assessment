@@ -10,7 +10,7 @@ class EmployeePage {
     this.employeeId = page.locator('.oxd-input-group')
       .filter({ has: page.getByText('Employee Id', { exact: true }) })
       .locator('input');
-    this.table = page.locator('.oxd-table'); // OrangeHRM renders a div-grid, not a native HTML table.
+    this.table = page.locator('.oxd-table');
     this.rows = page.locator('.oxd-table-body .oxd-table-row');
     this.noRecords = page.getByText(messages.noRecords, { exact: true });
   }
