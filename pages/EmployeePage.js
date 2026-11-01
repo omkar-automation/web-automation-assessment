@@ -34,7 +34,6 @@ class EmployeePage {
   async assertResultsRendered() {
     await expect(this.table).toBeVisible();
     await expect(this.page.locator('.oxd-table-header')).toBeVisible();
-    // Shared public demo data may be changed by other users.
     await expect.poll(async () => {
       const rowCount = await this.rows.count();
       return rowCount > 0 || await this.noRecords.isVisible();
