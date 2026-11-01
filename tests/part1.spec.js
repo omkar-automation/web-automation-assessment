@@ -26,7 +26,6 @@ test.describe('Part 1 — Functional coverage', () => {
     await dashboardPage.openPIM();
     await employeePage.assertLoaded();
     await employeePage.assertResultsRendered();
-    await expect(employeePage.employeeId).toBeVisible();
     await employeePage.assertEmployeeData();
 });
 

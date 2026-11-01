@@ -1,24 +1,20 @@
 const { test, expect } = require('../fixtures/testFixtures');
 const { nonexistentEmployeeId } = require('../test-data/employeeData');
-
-test('edge EC-01: empty employee ID search', async ({ authenticatedPage, employeePage }) => {
+ 
+test('edge EC-01: empty employee ID search', async ({authenticatedPage, employeePage }) => {
   await employeePage.open();
-
   await employeePage.employeeId.fill('');
   await employeePage.searchButton.click();
-
   await expect(employeePage.employeeId).toHaveValue('');
   await employeePage.assertResultsRendered();
 });
 
 
-test('edge EC-02: whitespace-only employee ID', async ({ authenticatedPage, employeePage }) => {
+ test('edge EC-02: whitespace-only employee ID', async ({ authenticatedPage, employeePage }) => {
   await employeePage.open();
   await employeePage.employeeId.fill('   ');
   await employeePage.searchButton.click();
-  await expect(employeePage.heading).toBeVisible();
-  await expect(employeePage.searchButton).toBeEnabled();
-  await expect(employeePage.table).toBeVisible();
+  await employeePage.assertNoEmployeeRows();   
 });
   
 
@@ -46,4 +42,3 @@ test('edge EC-02: whitespace-only employee ID', async ({ authenticatedPage, empl
       contentType: 'text/plain',
     });
   });
-

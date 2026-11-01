@@ -15,6 +15,10 @@ class EmployeePage {
     this.noRecords = page.getByText(messages.noRecords, { exact: true });
   }
 
+  async assertNoEmployeeRows() {
+    await expect(this.rows).toHaveCount(0);
+  }
+
   async open() {
     await this.page.goto(paths.employees);
     await this.assertLoaded();
