@@ -1,22 +1,20 @@
 const { test, expect } = require('../fixtures/testFixtures');
-const { nonexistentEmployeeId } = require('../test-data/employeeData');
- 
-test('edge EC-01: empty employee ID search', async ({authenticatedPage, employeePage }) => {
+const { nonexistentEmployeeId, nonexistentEmployeeName } = require('../test-data/employeeData'); 
+
+test('edge EC-01: nonexistent employee ID search', async ({ 
+  authenticatedPage, employeePage}) => {
   await employeePage.open();
-  await employeePage.employeeId.fill('');
-  await employeePage.searchButton.click();
-  await expect(employeePage.employeeId).toHaveValue('');
-  await employeePage.assertResultsRendered();
+  await employeePage.searchById(nonexistentEmployeeId);
+  await employeePage.assertNoEmployeeRows();
 });
 
 
- test('edge EC-02: whitespace-only employee ID', async ({ authenticatedPage, employeePage }) => {
+test('edge EC-02: nonexistent employee name search', async ({
+  authenticatedPage, employeePage }) => {
   await employeePage.open();
-  await employeePage.employeeId.fill('   ');
-  await employeePage.searchButton.click();
-  await employeePage.assertNoEmployeeRows();   
+  await employeePage.searchByName(nonexistentEmployeeName);
+  await employeePage.assertNoEmployeeRows();
 });
-  
 
   test('network failure: failed employee API keeps search UI usable, recovery works', async ({ authenticatedPage, page, employeePage }) => {
     await employeePage.open();

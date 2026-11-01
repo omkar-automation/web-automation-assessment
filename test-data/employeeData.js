@@ -1,2 +1,8 @@
 const nonexistentEmployeeId = '999999';
-module.exports = { nonexistentEmployeeId };
+
+const nonexistentEmployeeName = 'NonexistentEmployeeXYZ987';
+
+module.exports = {
+  nonexistentEmployeeId,
+  nonexistentEmployeeName
+};

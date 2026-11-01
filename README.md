@@ -54,13 +54,18 @@ npx playwright show-report
 2. Invalid login and error message verification
 3. Employee list and search page verification
 
-**Part 2 - Edge Cases**
+
+## Part 2 - Edge Cases
 
 | ID | Scenario | Expected Result | Status |
-| EC-01 | Empty Employee ID | Search handles empty input | Automated |
-| EC-02 | Employee ID with only spaces | Page remains usable | Automated |
-| EC-03 | Employee name with extra spaces | Input is handled correctly | Not automated |
-| EC-04 | Very long Employee ID | No application crash | Not automated |
+
+| EC-01 | Search with nonexistent Employee ID | "No Records Found" message should be displayed with 0 employee rows. | Automated |
+
+| EC-02 | Search with nonexistent Employee Name | "No Records Found" message should be displayed with 0 employee rows. | Automated |
+
+| EC-03 | Search with nonexistent Supervisor Name | An appropriate validation or no-records message should be displayed. | Not Automated |
+
+| EC-04 | Enter Employee Name exceeding 100 characters | The application should restrict input to 100 characters or display an appropriate validation error. | Not Automated |
 
 I also added a network failure test using `page.route()` to check whether the employee search page remains usable and recovers after the request failure.
 
